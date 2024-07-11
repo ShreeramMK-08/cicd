@@ -41,8 +41,8 @@ pipeline {
         stage('Deploy to EKS') {
             steps {
                 script {
-                    sh 'sed -i "s|<IMAGE>|${ECR_REPO_URI}:${IMAGE_TAG}|g" deployment.yaml'
-                    sh 'kubectl apply -f deployment.yaml'
+                    sh 'sed -i "s|<IMAGE>|${ECR_REPO_URI}:${IMAGE_TAG}|g" k8s/deployment.yaml'
+                    sh 'kubectl apply -f k8s/deployment.yaml'
                 }
             }
         }
